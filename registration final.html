@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <style>
+        body {
+            background-color: #C490E4; /* Light Pink Background */
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #CDF0EA; /* White Form Background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid black; /* Pink Border Color */
+            border-radius: 4px;
+        }
+
+        .button {
+            background-color: #C490E4;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        p {
+            color: red; /* Red Text Color for Error Message */
+        }
+
+        .regi-title {
+            text-align: center; /* Align text in the center */
+            border-color: #333;
+            border-radius: 10px;
+            background-color: #F6C6EA;
+            padding: 2px;
+            margin-bottom: 10px;
+            width: 380px; /* Adjust the width as needed */
+            margin: 0 auto; 
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <form action="/register" method="post" enctype="multipart/form-data">
+            <div class="regi-title">
+                <h2 style="text-align: center;">Registration Form</h2>
+                </div>
+            <div>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
+            <div>
+                <label for="surname">Surname:</label><br>
+                <input type="text" id="surname" name="surname" required placeholder="Enter your surname">
+            </div>
+            <div>
+                <label for="age">Age:</label><br>
+                <input type="text" id="age" name="age" required placeholder="Enter your age">
+            </div>
+            <div>
+                <label for="gender">Gender:</label><br>
+                <input type="text" id="gender" name="gender" required placeholder="Enter your gender">
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required placeholder="Enter a password">
+            </div>
+            <div>
+                <label for="confirm_password">Confirm Password:</label><br>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm your password">
+            </div>
+            <div>
+                <input type="submit" class="button" value="Register">
+            </div>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

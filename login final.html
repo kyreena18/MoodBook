@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #C490E4;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    padding: 20px;
+    background-color: #CDF0EA;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #C490E4;    
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: #9b9bd9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.login-title {
+            text-align: center; 
+            border-color: #333;
+            border-radius: 10px;
+            background-color: #F6C6EA;
+            padding: 2px;
+            margin-bottom: 10px;
+            width: 380px; 
+            margin: 0 auto; 
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-title">
+        <h2>Login</h2>
+        </div>
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <p>Please smile to login :)</p>
+        </form>
+        {% if error %}
+            <script>alert("{{ error }}");</script>
+        {% endif %}
+        <button id="startCamera">Click Picture!</button>
+        <p id="errorMessage" style="color: red; display: none;"></p>
+        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        
+        <canvas id="canvas" style="display:none;"></canvas>
+        <button id="submitImage" style="display: none;">Submit</button>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    const startCameraButton = document.getElementById('startCamera');
+    const canvas = document.getElementById('canvas');
+    const submitButton = document.getElementById('submitImage');
+    const errorMessage = document.getElementById('errorMessage');
+    let image
+    startCameraButton.addEventListener('click', () => {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                video.play();
+
+                video.addEventListener('loadedmetadata', () => {
+                    canvas.width = 400;
+                    canvas.height = 300;
+                    const context = canvas.getContext('2d');
+                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                    submitButton.style.display = 'block';
+                });
+            })
+            .catch(error => console.error('Error accessing camera:', error));
+    });
+    submitButton.addEventListener('click', () => {
+    image = canvas.toDataURL('image/jpeg');
+    fetch('/detect_emotion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: image })
+    })
+    .then(response => {
+        // if (response.ok) {
+        //     window.location.href = '/home?image=' + encodeURIComponent(image);
+        // } else {
+        //     console.error('Error detecting emotion:', response.statusText);
+        // }
+    })
+    .catch(error => console.error('Error detecting emotion:', error));
+});
+    submitButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const data = {
+            email: email,
+            password: password,
+            image: image,
+        };
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = '/home';
+            } else {
+            response.json().then(data => {
+                if (error === 'User does not exist') {
+                    alert('User does not exist');
+                }else{
+                    const errorMessage = document.getElementById('errorMessage');
+                    errorMessage.textContent = 'User does not exist';
+                    errorMessage.style.display = 'block';
+                    alert('Please fill in both email and password fields.');
+                }   
+      });
+    }})
+    .catch((err) => console. log(err));
+})
+</script>
+</body>
+</html>
