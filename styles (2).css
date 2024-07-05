@@ -1,0 +1,562 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #C490E4;
+    text-align: center; 
+    color: F9F9F9;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #F6C6EA;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .user-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .logout-btn{
+    margin-left: 950px;
+    padding: 10px;
+    width:60px;
+    height:30px;
+    cursor: pointer;
+    background-color: #C490E4;
+    color: #F9F9F9;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: small;
+    }
+
+
+#app {
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #CDF0EA;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    #app {
+        max-width: 100%;
+        padding: 10px;
+    }
+    .diary-container {
+        gap: 10px;
+    }
+    
+      .diary-entry {
+        width: 100%;
+    }
+    
+      .movie-container {
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    
+  }
+.header {
+    text-align: center;
+    color: #333;
+}
+button {
+    padding: 10px 50px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #C490E4;
+    color: #F9F9F9;
+    border: none;
+    border-radius: 5px;
+}
+
+.buttonentry {
+    padding: 10px 50px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #C490E4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.date-input {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.date-input {
+    margin-right: 10px;
+}
+
+.date-input select {
+    margin-left: 10px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/*3 mood buttons*/
+.category {
+    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.happy {
+    background-color: #efffcc;
+}
+
+.sad {
+    background-color: #ccd7ff;
+}
+
+.angry {
+    background-color: #ffcccc;
+}
+
+
+#entry-input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 10px #f7f7f7;
+    
+}
+
+#add-entry{
+    background-color: #9b9bd9;
+    color: white;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+#viewallentries{
+    background-color: #9b9bd9;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+/*movies container*/
+.movie-container {
+    padding: 10px;
+    background-color: #CDF0EA;
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    margin-right: auto; /* Align to the left of the main container */
+    margin-left: auto; /* Align to the right of the main container */
+    max-width: 280px; /* Set a maximum width for the movie container */
+    max-height: 440px; /* Set a maximum height for the movie container */ 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items to the center horizontally */
+    float: left;
+}
+
+.movie-header{
+    text-align: center;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-color: #333;
+    border-radius: 10px;
+    background-color: #F6C6EA;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+.movie-container {
+    flex-shrink: 0; 
+}
+
+.movie-buttons-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.movie-buttons-container button, .shuffle button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #C490E4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+/*when button is clicked*/
+.movie-buttons-container button:active {
+    background-color: #9b9bd9;  
+}
+
+.movie-display {
+    text-align: center;
+}
+#movie-poster{
+    width: 150px;
+    height: 200px;
+}
+
+
+  button {
+    padding: 5px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+
+/*all entries page*/
+body.all-entries {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #ffccff;
+    text-align: center; 
+    overflow-y: scroll; /* Add scrollbar for vertical overflow */
+}
+
+body.all-entries h1 {
+    margin-bottom: 20px;
+}
+
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    background-color: #C490E4;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+body.all-entries .entry-container {
+    padding: 20px; /* Add padding to the entry container */
+    box-sizing: border-box; /* Include padding in the total width/height */
+}
+
+body.all-entries .entry {
+    width: 100%; /* Full width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 10px; /* Adjusted padding */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 0px solid rgba(0, 0, 0, 0.1);
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/*3 mood buttons*/
+.category {
+    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.happy {
+    background-color: #efffcc;
+}
+
+.sad {
+    background-color: #ccd7ff;
+}
+
+.angry {
+    background-color: #ffcccc;
+}
+
+
+.left{
+    float: left;
+    position: static;
+}
+
+.right{
+    float: right;
+    position:static;
+}
+
+.center{
+    align-items: center;
+}
+
+
+
+/*media player*/
+.media-card {
+    width: 240px;
+    padding-top: 20px;
+    height: 440px;
+    background-color: #CDF0EA;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    float: right;
+    margin-top: 40px;
+    }
+    #poster {
+        width: 170px;
+        height: 250px;
+        object-fit: cover;
+        margin-bottom: 10px; /* Reduced margin to make space for title and artist */
+    }
+    #song-title {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    #artist-title {
+        font-size: 14px;
+        color: #555; /* Artist title color */
+        margin-bottom: 10px;
+    }
+    .player-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px; /* Reduced margin */
+    }
+    .play-icon {
+        align-items: center;
+        background-color: #000;
+        justify-content: center;
+    }
+    
+    .pause-icon {
+        color: #fff;
+    }
+    #prev-song img,
+    #play-pause img,
+    #next-song img {
+        width: 20px; /* Set the desired width */
+        height: 20px; /* Set the desired height */
+        display: block;
+        margin: auto; /* Center the image horizontally within the button */
+        vertical-align: middle; 
+    }
+    
+    
+    #prev-song, #play-pause, #next-song {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 0 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #f595ea;
+        transition: background-color 0.3s;
+    }
+    
+    
+    .media-player{
+        text-align: center;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-color: #333;
+        border-radius: 10px;
+        background-color: #ffccff;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin-bottom: 10px;
+    }
+/* reminders */
+.reminder-container {
+    width: 200px;
+    height: 200px;
+    margin-top: -756px;
+    padding: 20px;
+    background-color: #CDF0EA;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow-y: auto;
+    margin-bottom: 30px;
+    
+}
+#reminder-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    margin: 0;
+}
+#reminder-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#reminder-list li span {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: #555;
+}
+
+.input-container {
+    margin-bottom: 10px;
+}
+.due-label {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #888;
+}
+.cross {
+    color: red;
+    cursor: pointer;
+}
+.button-container {
+    margin-top: 10px;
+}
+
+.rem-title{
+    text-align: center;
+    border-color: #333;
+    border-radius: 10px;
+    background-color: #F6C6EA;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 10px;
+}
+
+/*journal*/
+
+.container {
+    width: 608px;
+    min-height: 580px; /* Minimum height */
+    max-height: 580px; /* Maximum height */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 20px;
+    overflow-y: auto; /* Add scrollbar if content exceeds height */
+}
+.entry-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.form-group label {
+    width: 100px;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+.form-group select {
+    flex-grow: 1;
+    width: 120px; /* Adjust the width as needed */
+}
+.form-group input[type="date"],
+.form-group textarea {
+    flex-grow: 1;
+}
+.entry-textarea {
+    width: calc(100% - 100px); /* Adjust width based on label width */
+}
+
+.filter-buttons {
+    width: 100%;
+    padding: 10 px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.filter-buttons button{
+    width: 20%;
+    height: 40px;
+    padding: 10 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: medium;
+}
+.journal-title{
+    text-align: center;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-color: #333;
+    border-radius: 10px;
+    background-color: #F6C6EA;
+    padding-top: 1px;
+    padding-bottom: 1px;   
+}
+
+
+
+.quotes-title{
+    text-align: center;
+    border-color: #333;
+    border-radius: 10px;
+    background-color: #F6C6EA;
+    margin-bottom: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.quotes-card {
+    width: 200px;
+    height: 200px;
+    background-color: #CDF0EA;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: -756px;
+    text-align: center;
+  }
+
+  #quotes-button {
+    background-color: #C490E4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
